@@ -2,7 +2,7 @@
 title: "Data Storytelling with Spotify Data"
 ---
 
-# Digital Storytelling
+# Digital Storytelling...
 
 By using data, you can paint a clearer picture of what's happening and help others understand the story behind the numbers. It's like being a detective, piecing together clues (or data points) to reveal the bigger picture. So, data storytelling is all about taking raw data and turning it into a story that anyone can understand, helping to convey messages and insights in a compelling and easy-to-follow.
 
