@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Storytelling with Spotify Data",
+    "section": "",
+    "text": "By using data, you can paint a clearer picture of what’s happening and help others understand the story behind the numbers. It’s like being a detective, piecing together clues (or data points) to reveal the bigger picture. So, data storytelling is all about taking raw data and turning it into a story that anyone can understand, helping to convey messages and insights in a compelling and easy-to-follow."
+  },
+  {
+    "objectID": "index.html#taylor-swift",
+    "href": "index.html#taylor-swift",
+    "title": "Data Storytelling with Spotify Data",
+    "section": "Taylor Swift",
+    "text": "Taylor Swift\nTaylor Alison Swift is an American singer-songwriter who was born on December 13, 1989. She is known for her narrative songs about her personal life and has sold more than 50 million albums. (Reference)\nSwift has released nine studio albums, including Lover (2019), reputation (2017), Midnights (2022), and folklore (2020). She has won 11 Grammys and broken 58 Guinness World Records. In 2023, Bloomberg estimated Swift’s net worth at $1.1 billion, making her one of the world’s richest self-made women.(Reference1, Reference2)"
+  },
+  {
+    "objectID": "index.html#ed-sheeran",
+    "href": "index.html#ed-sheeran",
+    "title": "Data Storytelling with Spotify Data",
+    "section": "Ed Sheeran",
+    "text": "Ed Sheeran\nEdward Christopher Sheeran (born 17 February 1991) is an English singer-songwriter known for his genre-crossing style infused with elements of folk, rock, rhythm and blues (R&B), pop, and hip-hop. He was born in Halifax, West Yorkshire, and raised in Framlingham, Suffolk, he began writing songs around the age of eleven. In early 2011, Sheeran independently released the extended play No. 5 Collaborations Project. He signed with Asylum Records the same year. (Reference1, Reference2)\nEd Sheeran has received numerous awards throughout his career, including multiple Grammys, Brit Awards, and MTV Video Music Awards. He has also been honored with an MBE (Member of the Order of the British Empire) for his services to music and charity. Sheeran’s accolades reflect his widespread acclaim and success in the music industry, solidifying his position as one of the most celebrated artists of his generation. (Reference1, Reference2)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "dv.html",
+    "href": "dv.html",
+    "title": "Data Visualizations",
+    "section": "",
+    "text": "This data is downloaded using Spotify API."
+  },
+  {
+    "objectID": "dv.html#data",
+    "href": "dv.html#data",
+    "title": "Data Visualizations",
+    "section": "",
+    "text": "This data is downloaded using Spotify API."
+  },
+  {
+    "objectID": "dv.html#spotify-audio-features",
+    "href": "dv.html#spotify-audio-features",
+    "title": "Data Visualizations",
+    "section": "Spotify Audio Features",
+    "text": "Spotify Audio Features\nFor every track on their platform, Spotify provides data for thirteen Audio Features.The Spotify Web API developer guidehttps://developer.spotify.com/discover/ defines them as follows:\nDanceability: Describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity.\nValence: Describes the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).\nEnergy: Represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale.\nTempo: The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece, and derives directly from the average beat duration.\nLoudness: The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks.\nspeechiness: This detects the presence of spoken words in a track. The more exclusively instrum-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value.\nInstrumentalness: Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”.\nLiveness: Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live.\nAcousticness: A confidence measure from 0.0 to 1.0 of whether the track is acoustic.\nKey: The estimated overall key of the track. Integers map to pitches using standard Pitch Class notation . E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on.\nMode: Indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.\nDuration: The duration of the track in milliseconds.\nTime Signature: An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure)."
+  }
+]
