@@ -1,0 +1,9 @@
+---
+title: " "
+---
+
+Please scan the following QR code for the Website:
+
+![](website_link.png){width="516"}
+
+Or use the following link : <https://isurudilan.github.io/High_School/>

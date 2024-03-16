@@ -4,11 +4,19 @@ project:
 
 website:
   title: "Annual HS Outreach - GMU Statistics"
+  
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
-      - dv.qmd
+      - href: dv.qmd
+        text: Data Visualizations
+        
+author:
+      - name: Dr. Isuru Dassanayake
+        affiliations:
+          - name: Department of Statistics - George Mason University
+          
 
 format:
   html:

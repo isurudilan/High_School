@@ -2,65 +2,72 @@
   {
     "objectID": "dv.html",
     "href": "dv.html",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "",
-    "text": "This data is downloaded using Spotify API."
+    "text": "This data was downloaded using Spotify API."
   },
   {
     "objectID": "dv.html#data",
     "href": "dv.html#data",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "",
-    "text": "This data is downloaded using Spotify API."
+    "text": "This data was downloaded using Spotify API."
   },
   {
     "objectID": "dv.html#spotify-audio-features",
     "href": "dv.html#spotify-audio-features",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "Spotify Audio Features",
     "text": "Spotify Audio Features\nFor every track on their platform, Spotify provides data for thirteen Audio Features.The Spotify Web API developer guidehttps://developer.spotify.com/discover/ defines them as follows:\nDanceability: Describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity.\nValence: Describes the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).\nEnergy: Represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale.\nTempo: The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece, and derives directly from the average beat duration.\nLoudness: The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks.\nspeechiness: This detects the presence of spoken words in a track. The more exclusively instrum-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value.\nInstrumentalness: Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”.\nLiveness: Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live.\nAcousticness: A confidence measure from 0.0 to 1.0 of whether the track is acoustic.\nKey: The estimated overall key of the track. Integers map to pitches using standard Pitch Class notation . E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on.\nMode: Indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.\nDuration: The duration of the track in milliseconds.\nTime Signature: An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure)."
   },
   {
     "objectID": "dv.html#music-properties-of-ed-sheerans-and-taylor-swifts-songs",
     "href": "dv.html#music-properties-of-ed-sheerans-and-taylor-swifts-songs",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "Music properties of Ed Sheeran’s and Taylor Swift’s songs",
     "text": "Music properties of Ed Sheeran’s and Taylor Swift’s songs\n\n\nCode\ndf&lt;-read.csv(\"Artists_TS_B.csv\") \ndf$artist_name&lt;-as.factor(df$artist_name)\n\n\n# Aggregate data to get average values for each year and artist\nagg_df &lt;- aggregate(cbind(danceability, speechiness, acousticness, liveness) ~ album_release_year + artist_name, data = df, FUN = mean)\n\n# Define custom colors for Ed Sheeran and Taylor Swift\ncustom_colors &lt;- c(\"Ed Sheeran\" = \"blue\", \"Taylor Swift\" = \"red\")\n\n# Plot danceability bubble chart\nfig1 &lt;- plot_ly(agg_df, x = ~album_release_year, y = ~danceability, \n                size = ~danceability,\n                color = ~artist_name, \n                type = 'scatter', mode = 'markers', \n                marker = list(sizemode = 'diameter', sizeref = 1.6),\n                colors = custom_colors,\n                legendgroup = ~artist_name ,\n                showlegend = FALSE\n) |&gt;\n  layout(xaxis = list(showgrid = FALSE),yaxis = list(showgrid = FALSE))\n\n\n\n# Plot speechiness bubble chart\nfig2 &lt;- plot_ly(agg_df, x = ~album_release_year, y = ~speechiness, \n                size = ~speechiness, color = ~artist_name, \n                type = 'scatter', mode = 'markers', \n                marker = list(sizemode = 'diameter', sizeref = 1.6, line = list(width = 2)), \n                colors = custom_colors, legendgroup = ~artist_name,\n                showlegend = FALSE) |&gt;\n  layout(xaxis = list(showgrid = FALSE),yaxis = list(showgrid = FALSE)) \n\n# Plot acousticness bubble chart\nfig3 &lt;- plot_ly(agg_df, x = ~album_release_year, y =  ~acousticness, \n                size = ~acousticness, color = ~artist_name, \n                type = 'scatter', mode = 'markers', \n                marker = list(sizemode = 'diameter', sizeref = 1.6, line = list(width = 2)), \n                colors = custom_colors,\n                legendgroup = ~artist_name,\n                showlegend = FALSE\n) |&gt;\n  layout(xaxis = list(showgrid = FALSE, zeroline=FALSE),yaxis = list(showgrid = FALSE, zeroline=FALSE)) \n\n# Plot liveness bubble chart\nfig4 &lt;- plot_ly(agg_df, x = ~album_release_year, y = ~liveness, \n                size = ~liveness, color = ~artist_name, \n                type = 'scatter', mode = 'markers', \n                marker = list(sizemode = 'diameter', sizeref = 1.6, line = list(width = 2)), \n                colors = custom_colors,\n                legendgroup = ~artist_name,\n                showlegend = TRUE\n) |&gt;\n  layout(xaxis = list(showgrid = FALSE),yaxis = list(showgrid = FALSE)) \n\n# Combine subplots\n#subplot(fig1, fig2, fig3, fig4, nrows = 2, shareX = TRUE)\n\n# fig &lt;- make_subplots(rows=2,\n#                     cols=2,\n#                     #print_grid=True,\n#                     vertical_spacing=0.1,\n#                     horizontal_spacing=0.085,\n#                     x_title='Your master x-title',\n#                     y_title='Your master y-title')\n\nfig &lt;- subplot(fig1, fig2, fig3, fig4, nrows = 2, shareX=TRUE, titleX=FALSE)\n\n\nannotations &lt;- list(\n  list(\n    x = 0.2,\n    y = 1.0,\n    text = \"Danceability\",\n    xref = \"paper\",\n    yref = \"paper\",\n    xanchor = \"center\",\n    yanchor = \"bottom\",\n    showarrow = FALSE\n  ),\n  list(\n    x = 0.8,\n    y = 1,\n    text = \"Speechiness\",\n    xref = \"paper\",\n    yref = \"paper\",\n    xanchor = \"center\",\n    yanchor = \"bottom\",\n    showarrow = FALSE\n  ),\n  list(\n    x = 0.2,\n    y = 0.45,\n    text = \"Acousticness\",\n    xref = \"paper\",\n    yref = \"paper\",\n    xanchor = \"center\",\n    yanchor = \"bottom\",\n    showarrow = FALSE\n  ),\n  list(\n    x = 0.8,\n    y = 0.45,\n    text = \"Liveness\",\n    xref = \"paper\",\n    yref = \"paper\",\n    xanchor = \"center\",\n    yanchor = \"bottom\",\n    showarrow = FALSE\n  ),\n  list(\n    x=0.5,\n    y=-0.035,\n    text=\"Release Year\",\n    xref = \"paper\",\n    yref = \"paper\",\n    xanchor = \"bottom\",\n    yanchor = \"top\",\n    showarrow = FALSE,\n    font=list(size=16)\n  )\n)\n\nfig &lt;- fig |&gt; layout(annotations = annotations)\nfig"
   },
   {
     "objectID": "dv.html#tempo-ed-sheerans-and-taylor-swifts-songs-over-the-years",
     "href": "dv.html#tempo-ed-sheerans-and-taylor-swifts-songs-over-the-years",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "Tempo Ed Sheeran’s and Taylor Swift’s songs over the Years",
     "text": "Tempo Ed Sheeran’s and Taylor Swift’s songs over the Years\n\n\nCode\nyears_to_keep &lt;- c(2014,2017,2019, 2021, 2022, 2023)\nfiltered_df &lt;- subset(df, album_release_year %in% years_to_keep)\n\n# Aggregate tempo values by artist_name and album_release_year\nagg_df &lt;- aggregate(tempo ~ artist_name + album_release_year, data = filtered_df, FUN = mean)\n\n# Create the animated bar plot\nfig &lt;- plot_ly(agg_df,\n               x = ~artist_name,\n               y = ~tempo, \n               color = ~artist_name, \n               type = 'bar',\n               frame = ~album_release_year, \n               text = ~artist_name, \n               hoverinfo = \"text\")\n\n# Add animation button and slider\nfig &lt;- fig %&gt;% animation_button(\n  x = 1, xanchor = \"right\", y = 0, yanchor = \"bottom\"\n)\nfig &lt;- fig %&gt;% animation_slider(\n  currentvalue = list(prefix = \"YEAR \", font = list(color=\"red\"))\n)\n\n# Add title, x-axis label, and y-axis label\nfig &lt;- fig %&gt;% layout(\n  title = \"Tempo of Ed Sheeran's and Taylor Swift’s songs over the Years\",\n  xaxis = list(title = \"Album Release Year\"),\n  yaxis = list(title = \"Tempo (BPM)\")\n)\nfig"
   },
   {
-    "objectID": "dv.html#number-of-albums-released-each-year-by-each-artist",
-    "href": "dv.html#number-of-albums-released-each-year-by-each-artist",
-    "title": "Data Visualizations",
-    "section": "Number of Albums released each year by each Artist",
-    "text": "Number of Albums released each year by each Artist"
+    "objectID": "dv.html#energy-vs-valance-by-albums",
+    "href": "dv.html#energy-vs-valance-by-albums",
+    "title": "This is a bar chart for comparison",
+    "section": "Energy Vs Valance by Albums",
+    "text": "Energy Vs Valance by Albums"
   },
   {
     "objectID": "dv.html#most-frequently-used-words-in-track-names",
     "href": "dv.html#most-frequently-used-words-in-track-names",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "Most frequently used words in track names",
     "text": "Most frequently used words in track names"
   },
   {
     "objectID": "dv.html#word-cloud-for-taylor-swift",
     "href": "dv.html#word-cloud-for-taylor-swift",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "Word cloud for Taylor Swift",
     "text": "Word cloud for Taylor Swift\n\n\nCode\n# Create word clouds for Taylor Swift and Ed Sheeran\n# Words to be removed\nwords_to_remove &lt;- c(\"the\", \"this\", \"to\", \"is\", \"are\")\n\n# Filter out the words to be removed from your word frequency data\ntaylor_swift_word_freq_filtered &lt;- taylor_swift_word_freq[!taylor_swift_word_freq[,1] %in% words_to_remove, ]\n\n# Set up your word cloud parameters\nts_size &lt;- 1\nts_bg_color &lt;- \"white\"\nts_color &lt;- ifelse(taylor_swift_word_freq_filtered[, 2] &gt; 8, 'red', 'skyblue')\n\n# Convert your filtered data to a data frame\nts_data &lt;- as.data.frame(taylor_swift_word_freq_filtered)\nts_dataOut &lt;- ts_data[,1:2]\nnames(ts_dataOut) &lt;- c(\"name\", \"freq\")\n\n# Calculate weight factor\nweightFactor &lt;- ts_size * 180 / max(ts_dataOut$freq)\n\n# Define hover function and widget size\nhoverFunction &lt;- NULL\nwidgetsize &lt;- NULL\n\n# Set up word cloud settings\nts_settings &lt;- list(\n  word = ts_dataOut$name,\n  freq = ts_dataOut$freq,\n  fontFamily = 'Segoe UI',\n  fontWeight = 'bold',\n  color =  ts_color,\n  minSize =  0,\n  weightFactor = weightFactor,\n  backgroundColor = ts_bg_color,\n  gridSize =  0,\n  minRotation = -pi/4,\n  maxRotation = pi/4,\n  shuffle = TRUE,\n  rotateRatio = 0.4,\n  shape = 'circle',\n  ellipticity = 0.65,\n  figBase64 = NULL,\n  hover = htmlwidgets::JS(hoverFunction)\n)\n\n# Create the word cloud\nhtmlwidgets::createWidget(\"wordcloud2\", ts_settings,\n                          width = widgetsize[1],\n                          height = widgetsize[2],\n                          sizingPolicy = htmlwidgets::sizingPolicy(\n                            viewer.padding = 0,\n                            browser.padding = 0,\n                            browser.fill = TRUE\n                          ))"
   },
   {
     "objectID": "dv.html#word-cloud-for-ed-sheeran",
     "href": "dv.html#word-cloud-for-ed-sheeran",
-    "title": "Data Visualizations",
+    "title": "This is a bar chart for comparison",
     "section": "Word cloud for Ed Sheeran",
     "text": "Word cloud for Ed Sheeran\n\n\nCode\n# Words to be removed\nwords_to_remove &lt;- c(\"on\", \"the\", \"in\")\n\n# Filter out the words to be removed from your word frequency data\ned_word_freq_filtered &lt;- ed_word_freq[!ed_word_freq[,1] %in% words_to_remove, ]\n\n# Set up your word cloud parameters\nb_size &lt;- 1\nb_bg_color &lt;- \"white\"\nts_color &lt;- ifelse(ed_word_freq_filtered[, 2] &gt; 8, 'purple', 'green')\n\n# Convert your filtered data to a data frame\nb_data &lt;- as.data.frame(ed_word_freq_filtered)\nb_dataOut &lt;- b_data[,1:2]\nnames(b_dataOut) &lt;- c(\"name\", \"freq\")\n\n# Calculate weight factor\nb_weightFactor &lt;- b_size * 180 / max(b_dataOut$freq)\n\n# Define hover function and widget size\nhoverFunction &lt;- NULL\nwidgetsize &lt;- NULL\n\n# Set up word cloud settings\nb_settings &lt;- list(\n  word = b_dataOut$name,\n  freq = b_dataOut$freq,\n  fontFamily = 'Segoe UI',\n  fontWeight = 'bold',\n  color =  ts_color,\n  minSize =  0,\n  weightFactor = b_weightFactor,\n  backgroundColor = b_bg_color,\n  gridSize =  0,\n  minRotation = -pi/4,\n  maxRotation = pi/4,\n  shuffle = TRUE,\n  rotateRatio = 0.4,\n  shape = 'circle',\n  ellipticity = 0.65,\n  figBase64 = NULL,\n  hover = htmlwidgets::JS(hoverFunction)\n)\n\n# Create the word cloud\nhtmlwidgets::createWidget(\"wordcloud2\", b_settings,\n                          width = widgetsize[1],\n                          height = widgetsize[2],\n                          sizingPolicy = htmlwidgets::sizingPolicy(\n                            viewer.padding = 0,\n                            browser.padding = 0,\n                            browser.fill = TRUE\n                          ))"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "index.html",
@@ -84,10 +91,10 @@
     "text": "Ed Sheeran\nEdward Christopher Sheeran (born 17 February 1991) is an English singer-songwriter known for his genre-crossing style infused with elements of folk, rock, rhythm and blues (R&B), pop, and hip-hop. He was born in Halifax, West Yorkshire, and raised in Framlingham, Suffolk, he began writing songs around the age of eleven. In early 2011, Sheeran independently released the extended play No. 5 Collaborations Project. He signed with Asylum Records the same year. (Reference1, Reference2)\nEd Sheeran has received numerous awards throughout his career, including multiple Grammys, Brit Awards, and MTV Video Music Awards. He has also been honored with an MBE (Member of the Order of the British Empire) for his services to music and charity. Sheeran’s accolades reflect his widespread acclaim and success in the music industry, solidifying his position as one of the most celebrated artists of his generation. (Reference1, Reference2)"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "Annual HS Outreach - GMU Statistics",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Please scan the following QR code for the Website:\n\nOr use the following link : https://isurudilan.github.io/High_School/"
   }
 ]
